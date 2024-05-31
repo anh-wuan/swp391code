@@ -26,8 +26,13 @@ public class User {
     public String phone;
     public String password;
     public int RoleID ;
+    public String code;
     public boolean IsActive;
     public Date CreateAt;
     public Date UpdateAt;
     public Date DeleteAt;
+
+    String getCode() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -18,7 +18,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserSignUp {
+    public String fullName;
     public String userName;
     public String password;
     public String email;
+    public int RoleId;
 }
