@@ -13,8 +13,16 @@
         <servlet-class>Controller.DeleteTimeShares</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>Homepage</servlet-name>
+        <servlet-class>Controller.HomeController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>TimeShareService</servlet-name>
         <servlet-class>Service.TimeShareService</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PaymentController</servlet-name>
+        <servlet-class>Controller.PaymentController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AuthenticationController</servlet-name>
@@ -31,5 +39,13 @@
     <servlet-mapping>
         <servlet-name>TimeShareService</servlet-name>
         <url-pattern>/TimeShareService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Homepage</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentController</servlet-name>
+        <url-pattern>/payment</url-pattern>
     </servlet-mapping>
 </web-app>

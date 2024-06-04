@@ -13,7 +13,7 @@ public class DBContext {
     /*DO NOT EDIT THE BELOW METHOD, YOU MUST USE ONLY THIS ONE FOR YOUR DATABASE CONNECTION*/
     public static Connection getConnection() throws ClassNotFoundException {
         String serverName = "localhost";
-        String dbName = "HomeStayManagement";
+        String dbName = "Timeshare";
         String portNumber = "1433";
         String userID = "sa";
         String password = "161203";

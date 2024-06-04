@@ -28,7 +28,6 @@ public class AuthenticationController extends HttpServlet {
         String url = "views/common/sign-in.jsp";
         HttpSession session = request.getSession(false);
         String action = request.getParameter("action") == null ? "" : request.getParameter("action");
-
         switch (action) {
             case "login":
                 url = "views/common/sign-in.jsp";
@@ -68,13 +67,13 @@ public class AuthenticationController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public void Login(HttpServletRequest request, HttpServletResponse response) {
+    private void Login(HttpServletRequest request, HttpServletResponse response) {
         try {
             String url = "views/common/sign-in.jsp";
             String userName = request.getParameter("userName");
             String password = request.getParameter("password");
             HttpSession session = request.getSession(false);
-
+            
             AuthenticationDAO authDAO = new AuthenticationDAO();
             User userLogedIn = authDAO.Login(userName, password);
             if (userLogedIn != null) {
@@ -95,11 +94,10 @@ public class AuthenticationController extends HttpServlet {
         }
     }
 
-    public void SignUp(HttpServletRequest request, HttpServletResponse response) {
+     public void SignUp(HttpServletRequest request, HttpServletResponse response) {
         try {
             HttpSession session = request.getSession();
 
-            String url = "views/common/sign-in.jsp";
             String userName = request.getParameter("username");
             String password = request.getParameter("password");
             String email = request.getParameter("email");
@@ -111,9 +109,9 @@ public class AuthenticationController extends HttpServlet {
             session.setAttribute("tempEmail", email);
             session.setAttribute("tempFullName", fullname);
 
-            // Implement OtpService to get OTP code
+            // Generate OTP
             OtpService otpService = new OtpService();
-            String otp = OtpService.genarateOtp();
+            String otp = otpService.genarateOtp();
 
             session.setAttribute("otp", otp);
 
@@ -122,7 +120,7 @@ public class AuthenticationController extends HttpServlet {
             mailService.sendMail(email, otp);
 
             // Redirect to OTP verification page
-            url = "views/common/enter-otp.jsp";
+            String url = "views/common/enter-otp.jsp";
             request.setAttribute("SUCCESSMESSAGE", "Register Successfully! Please enter the OTP sent to your email.");
             request.getRequestDispatcher(url).forward(request, response);
 

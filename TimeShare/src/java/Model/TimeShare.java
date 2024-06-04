@@ -9,14 +9,72 @@ public class TimeShare {
     private String address;
     private int status;
     private int userId;
-    private Timestamp startDate;
-    private Timestamp endDate;
+    private String startDate;
+    private String endDate;
     private String description;
-    private Timestamp createAt;
-    private Timestamp updateAt;
-    private Timestamp deleteAt;
+    private String createAt;
+    private String updateAt;
+    private String deleteAt;
+
+    public TimeShare() {
+    }
+
+    public TimeShare(int TSid, String TSname, String image, String address, int status, int userId, String startDate, String endDate, String description, String createAt, String updateAt, String deleteAt) {
+        this.TSid = TSid;
+        this.TSname = TSname;
+        this.image = image;
+        this.address = address;
+        this.status = status;
+        this.userId = userId;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.description = description;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+        this.deleteAt = deleteAt;
+    }
+    
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setCreateAt(String createAt) {
+        this.createAt = createAt;
+    }
+
+    public void setUpdateAt(String updateAt) {
+        this.updateAt = updateAt;
+    }
+
+    public void setDeleteAt(String deleteAt) {
+        this.deleteAt = deleteAt;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public String getCreateAt() {
+        return createAt;
+    }
+
+    public String getUpdateAt() {
+        return updateAt;
+    }
 
     // Getters and setters
+    public String getDeleteAt() {    
+        return deleteAt;
+    }
+
     public int getTSid() {
         return TSid;
     }
@@ -65,21 +123,7 @@ public class TimeShare {
         this.userId = userId;
     }
 
-    public Timestamp getStartDate() {
-        return startDate;
-    }
 
-    public void setStartDate(Timestamp startDate) {
-        this.startDate = startDate;
-    }
-
-    public Timestamp getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Timestamp endDate) {
-        this.endDate = endDate;
-    }
 
     public String getDescription() {
         return description;
@@ -89,27 +133,5 @@ public class TimeShare {
         this.description = description;
     }
 
-    public Timestamp getCreateAt() {
-        return createAt;
-    }
 
-    public void setCreateAt(Timestamp createAt) {
-        this.createAt = createAt;
-    }
-
-    public Timestamp getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Timestamp updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    public Timestamp getDeleteAt() {
-        return deleteAt;
-    }
-
-    public void setDeleteAt(Timestamp deleteAt) {
-        this.deleteAt = deleteAt;
-    }
 }

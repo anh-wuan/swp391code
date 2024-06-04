@@ -2,7 +2,6 @@ package Controller;
 
 import DAO.AuthenticationDAO;
 import Model.CreateModel.UserSignUp;
-import Service.MailService;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,13 +13,14 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet(name = "VerifyOTP", urlPatterns = {"/verify"})
 public class VerifyOTP extends HttpServlet {
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String otp = (String) session.getAttribute("otp");
-        String email = (String) session.getAttribute("tempEmail");
-        String userName = (String) session.getAttribute("tempUserName");
-        String password = (String) session.getAttribute("tempPassword");
-        String fullName = (String) session.getAttribute("tempFullName");
+        String email = (String) session.getAttribute("Email");
+        String userName = (String) session.getAttribute("Username");
+        String password = (String) session.getAttribute("Password");
+        String fullName = (String) session.getAttribute("FullName");
 
         String enteredOTP = request.getParameter("otp");
 
@@ -43,8 +43,9 @@ public class VerifyOTP extends HttpServlet {
                 session.removeAttribute("tempPassword");
                 session.removeAttribute("tempFullName");
 
-                String successMessage = "OTP verified successfully and user registered!";
-                request.setAttribute("successMessage", successMessage);
+                // Set success message and redirect to sign-in page
+                session.setAttribute("successMessage", "OTP verified successfully and user registered!");
+                response.sendRedirect("views/common/sign-in.jsp");
             } else {
                 request.setAttribute("errorMessage", "Failed to register user.");
                 request.getRequestDispatcher("views/common/enter-otp.jsp").forward(request, response);

@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -10,7 +11,7 @@ package Service;
  */
 public class OtpService {
 
-    public static String genarateOtp() {
+    public String genarateOtp() {
         String numbers = "0123456789";
         StringBuilder sb = new StringBuilder(6);
         for (int i = 0; i < 6; i++) {

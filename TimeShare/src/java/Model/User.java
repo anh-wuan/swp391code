@@ -31,8 +31,4 @@ public class User {
     public Date CreateAt;
     public Date UpdateAt;
     public Date DeleteAt;
-
-    String getCode() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
