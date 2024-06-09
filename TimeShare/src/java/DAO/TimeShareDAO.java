@@ -193,4 +193,34 @@ public class TimeShareDAO {
         }
         return false;
     }
+    
+    public boolean acceptTimeShare(int timeShareId) throws ClassNotFoundException {
+        String sql = "UPDATE TimeShare SET Status = ?, UpdateAt = ? WHERE TimeShareId = ?";
+        try (Connection conn = DBContext.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, 1);
+            ps.setTimestamp(2, Timestamp.from(Instant.now()));
+            ps.setInt(3, timeShareId);
+            int affectedRows = ps.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean declineTimeShare(int timeShareId) throws ClassNotFoundException {
+        String sql = "UPDATE TimeShare SET Status = ?, UpdateAt = ? WHERE TimeShareId = ?";
+        try (Connection conn = DBContext.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, 2);
+            ps.setTimestamp(2, Timestamp.from(Instant.now()));
+            ps.setInt(3, timeShareId);
+            int affectedRows = ps.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
